@@ -38,5 +38,3 @@ $> echo 'abcdefaaaabcdeabcabcdabc' | ./filter abc | cat -e
 ***defaaa***de******d***$
 $> echo 'ababcabababc' | ./filter ababc | cat -e
 *****ab*****$
-$>
-c1r3p1:filter exam
