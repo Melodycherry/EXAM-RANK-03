@@ -130,8 +130,6 @@ char *get_next_line(int fd)
             return NULL;
         }
         tmp = ft_strchr(b, '\n');
-        if (tmp)
-            break;
     }
         if (!str_append_mem(&line, b , tmp - b + 1))
         {
