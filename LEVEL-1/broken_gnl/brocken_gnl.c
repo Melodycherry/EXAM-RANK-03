@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 13:05:13 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/04/15 11:43:15 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:00:24 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,21 +113,19 @@ char    *extract_line(char **buffer_p)
     char    *buffer = *buffer_p;
     char    *new;
     int     i = 0;
-	int len = 0;
+	int 	len = 0;
 
-    if ((*buffer_p)[0] == '\0')
+    if ((buffer)[0] == '\0')
         return (NULL);
     while (buffer[i] && buffer[i] != '\n')
         i++;
 	
-// Alloue +2 si \n présent, +1 sinon
-if (buffer[i] == '\n')
-    len = i + 2;
-else
-    len = i + 1;
-new = ft_calloc(len, sizeof(char));
-	
-    //new = ft_calloc(buffer[i] == '\n' ? i + 2 : i + 1, sizeof(char));
+	// Alloue +2 si \n présent, +1 sinon
+	if (buffer[i] == '\n')
+		len = i + 2;
+	else
+		len = i + 1;
+	new = ft_calloc(len, sizeof(char));
 	
     if (!new)
         return (ft_free(buffer_p, NULL));
