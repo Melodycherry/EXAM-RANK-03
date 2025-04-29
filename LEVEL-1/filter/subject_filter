@@ -14,7 +14,8 @@ For example :
 will behave the same way as:
 sed 's/bonjour/*******/g'
 
-More generally, your program must be the equivalent of the shell script filter.sh
+More generally, your program must be the equivalent of the shell script filter.sh present in this directory
+( you can compare your program with it )
 
 in case of error during read or a malloc you must write "Error: " followed by
 the error message in stderr and return 1.
