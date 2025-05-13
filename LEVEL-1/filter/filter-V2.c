@@ -66,7 +66,7 @@ static void    filter(char *buffer, char *key)
                 printf("%c", '*');
                 k++;
             }
-            i += j; // pour skip les char remplaces 
+            i = i + j; // pour skip les char remplaces 
             j = 0;
         }
         else // si pas de correspondance on affiche normalement
