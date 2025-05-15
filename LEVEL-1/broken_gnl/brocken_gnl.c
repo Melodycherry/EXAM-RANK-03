@@ -199,32 +199,49 @@ char    *get_next_line(int fd)
 }
 
 // Main de test : affiche chaque ligne de chaque fichier donné en argument
+// Main Minimaliste, juste pour verif rapide en exam
 int main(int argc, char **argv)
 {
-    int     fd;
-    char    *line;
-    int     i;
+	int     fd;
+	char    *line;
 
-    i = 1;
-    while (i < argc)
-    {
-        fd = open(argv[i], O_RDONLY);
-        if (fd < 0)
-        {
-            perror("open");
-            i++;
-            continue;
-        }
-        while ((line = get_next_line(fd)))
-        {
-            printf("%s", line);
-            free(line);
-        }
-        close(fd);
-        i++;
-    }
-    return (0);
+	fd = open(argv[1], O_RDONLY);
+	while ((line = get_next_line(fd)))
+	{
+		printf("%s", line);
+		free(line);
+	}
+	close(fd);
+	return (0);
 }
+
+// // Main de test : affiche chaque ligne de chaque fichier donné en argument
+// int main(int argc, char **argv)
+// {
+//     int     fd;
+//     char    *line;
+//     int     i;
+
+//     i = 1;
+//     while (i < argc)
+//     {
+//         fd = open(argv[i], O_RDONLY);
+//         if (fd < 0)
+//         {
+//             perror("open");
+//             i++;
+//             continue;
+//         }
+//         while ((line = get_next_line(fd)))
+//         {
+//             printf("%s", line);
+//             free(line);
+//         }
+//         close(fd);
+//         i++;
+//     }
+//     return (0);
+// }
 
 /**
  * @brief Fonction get_next_line — Résumé par étape
