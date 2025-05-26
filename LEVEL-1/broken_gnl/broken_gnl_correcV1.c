@@ -1,16 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   broken_gnl_repare.c                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/25 18:21:42 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/05/25 18:22:16 by mlaffita         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+//EXAM
 
-#include "get_next_line.h"
+#include "broken_gnl.h"
 
 char    *f_strchr(char *str, int c)
 {
@@ -103,11 +93,11 @@ int main(int ac, char **av)
     char *line;
     while ((line = get_next_line(fd)) != NULL)
     {
-        printf("line :%s\n", line);
+        printf("%s", line);
         if (line)
             free(line);
     }
-    printf("terminated\n");
+    //printf("terminated\n");
     close(fd);
     return 0;
 }

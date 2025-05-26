@@ -1,4 +1,6 @@
-#include "get_next_line.h"
+//APISCOPO
+
+#include "broken_gnl.h"
 
 char    *ft_strchr(char *s, int c)
 {
