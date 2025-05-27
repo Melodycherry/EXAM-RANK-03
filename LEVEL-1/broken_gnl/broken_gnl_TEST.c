@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 16:52:31 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/05/27 17:49:19 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/05/27 23:08:541 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,12 @@ char *ft_strchr(char *s, int c)
 }
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	while (n-- > 0) // attention , mettre post decrementation 
-		((char*)dest)[n] = ((char*)src)[n]; // pas -1 car on a deja decrementer avant d'entrer dans la boucle 
+	int i = 0;	// a coder avec un i 
+	while (i < n)
+	{
+			((char*)dest)[i] = ((char*)src)[i];
+			i++;	
+	} 
 	return dest;
 }
 size_t ft_strlen(char *s)
@@ -58,17 +62,13 @@ int str_append_str(char **s1, char *s2)
 {
 	return str_append_mem(s1, s2, ft_strlen(s2));
 }
-void	*ft_memmove(void *dst, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t n)	// OSEF
 {
-	if (!dst && !src)
-		return (NULL); // securisation again 
-	if (dst < src) // attention < 
+	if (dst > src)
 		return ft_memcpy(dst, src, n);
-	else if (n == 0 || dst == src) // attention 
+	else if (dst == src)
 		return dst;
-	size_t i = ft_strlen((char*)src); // enlever le - 1 et faire 1 condition 
-	if (i > 0)
-		i = i - 1;
+	size_t i = ft_strlen((char*)src) - 1;
 	while (i >= 0)
 	{
 		((char*)dst)[i] = ((char*)src)[i];
@@ -80,10 +80,9 @@ char	*get_next_line(int fd)
 {
 	static char b[BUFFER_SIZE + 1] = {0}; // mettre des zero partout a la place des espaces 
 	char	*ret = NULL;
-	char 	*pos = NULL; // juste initialiser a null et fonction ds la boucle apres 
-	int 	read_ret = -1;
+	char 	*pos = NULL; // juste initialiser a null et fonction ds la boucle apres
 	
-	while (!pos && read_ret != 0)
+	while (1)
 	{
 		pos = ft_strchr(b, '\n'); // renomer variable car ca retourne la POSITION du '\n
 		if (pos)
@@ -93,23 +92,35 @@ char	*get_next_line(int fd)
 				free(ret);
 				return NULL;
 			}
-			ft_memmove(b, pos + 1, ft_strlen(pos + 1) + 1);
+			ft_memcpy(b, pos + 1, ft_strlen(pos + 1) + 1);	// repositionner le buffer 
 		}
 		else
 		{
 			if(!str_append_str(&ret, b))
-			return NULL;
-			read_ret = read(fd, b, BUFFER_SIZE);
-			b[read_ret] = 0;
+				return NULL;
+			int read_ret = read(fd, b, BUFFER_SIZE);
 			if (read_ret == -1)
 			{
 				free(ret); // ne pas oublier de freeeee
 				return NULL;
 			}
-			if (read_ret == 0 && b[0] == 0 && (!ret || ret == 0))
-				return NULL;
+			b[read_ret] = 0;
 			if (read_ret == 0)
+			{
+				if (!ret || ret[0] == 0) // fucking ret[0]
+				{
+					free(ret);
+					return NULL;
+				}
 				break;
+			}
+			// if (read_ret == 0)
+			// {
+			// 	if (ret && *ret)
+			// 		break;
+			// 	free(ret);
+			// 	return NULL;
+			// }
 		}
 	}
 	return ret;

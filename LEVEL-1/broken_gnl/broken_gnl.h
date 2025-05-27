@@ -2,7 +2,7 @@
 #define BROKEN_GNL_H
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
+# define BUFFER_SIZE 1100
 #endif
 
 #include <fcntl.h>
