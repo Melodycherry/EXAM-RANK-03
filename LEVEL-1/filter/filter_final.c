@@ -40,7 +40,7 @@ int main(int ac, char **av)
 		buffer_size++;					// Incremente avant le '\0'
 		buffer[buffer_size] = '\0';		// Attention ne pas oublier cette fois le'\0'
 	}
-    // etape 4 : remplasser le mot par des ***
+    // etape 4 : remplacer le mot par des ***
     filter(buffer, av[1]);
     free(buffer);
     return (0);
