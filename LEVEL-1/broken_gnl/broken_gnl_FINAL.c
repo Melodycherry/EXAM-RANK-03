@@ -104,50 +104,7 @@ char	*get_next_line(int fd)
 	ft_memcpy(b, tmp + 1, ft_strlen(tmp + 1) + 1);	// reinitialiser le buffer sans la ligne qui va etre retournee
 	return ret;
 }
-
-// char	*get_next_line(int fd)
-// {
-// 	static char b[BUFFER_SIZE + 1] = {0}; // mettre des zero partout a la place des espaces 
-// 	char	*ret = NULL;
-// 	char 	*pos = NULL; // juste initialiser a null et fonction ds la boucle apres 
-// 	
-// 	while (!pos)
-// 	{
-// 		pos = ft_strchr(b, '\n'); // renomer variable car ca retourne la POSITION du '\n
-// 		if (pos)
-// 		{
-// 			if (!str_append_mem(&ret, b, pos - b + 1))
-// 			{
-// 				free(ret);
-// 				return NULL;
-// 			}
-// 			ft_memcpy(b, pos + 1, ft_strlen(pos + 1) + 1);
-// 		}
-// 		else
-// 		{
-// 			if(!str_append_str(&ret, b))
-// 				return NULL;
-// 			int read_ret = read(fd, b, BUFFER_SIZE);
-// 			if (read_ret == -1)
-// 			{
-// 				free(ret); // ne pas oublier de freeeee
-// 				return NULL;
-// 			}
-// 			b[read_ret] = 0;
-// 			if (read_ret == 0)
-// 			{
-// 				if (ret && *ret)
-// 					break;
-// 				free(ret);
-// 				return NULL;
-// 			}
-// 		}
-// 	}
-// 	return ret;
-// }
-
-//Ajout de mon main pour test
-
+// Mini Main de verif'
 int main (int ac, char **av)
 {
 	int fd;
