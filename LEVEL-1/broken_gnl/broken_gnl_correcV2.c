@@ -1,4 +1,4 @@
-//APISCOPO
+//Autre version pour l'exam ?? 
 
 #include "broken_gnl.h"
 

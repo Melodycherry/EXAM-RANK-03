@@ -1,4 +1,4 @@
-//EXAM
+//Pour Exam ? correction fonctionnelle ? 
 
 #include "broken_gnl.h"
 

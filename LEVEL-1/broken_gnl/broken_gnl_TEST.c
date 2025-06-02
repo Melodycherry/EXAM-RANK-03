@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+// Multiples tentatives de debugg
+
 #include "broken_gnl.h"
 
 char *ft_strchr(char *s, int c)

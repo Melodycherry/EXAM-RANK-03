@@ -6,9 +6,11 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 16:12:58 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/05/27 22:54:05 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/06/02 13:16:51 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// Version broken, a debugguer 
 
 #include "broken_gnl.h"
 
